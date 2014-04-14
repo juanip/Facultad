@@ -108,7 +108,7 @@ function analyzeCurrentGeneration(){
 		fObjectiveSum += fObjective[i];
 	}
 
-	//calcula el fitness de todos los cromosomas
+	//calcula el fitness de todos los cromosomas 
 	for(i=0;i<POBLATION;i++){
 		fFitness[i] = fObjective[i] / fObjectiveSum;
 		currentAnalysis[i][1] = fFitness[i];

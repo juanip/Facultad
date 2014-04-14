@@ -86,7 +86,6 @@ function generateInitialPoblation(){
 			chromosome[i].push(Math.floor((Math.random()*2)));
 		}
 	}
-	alert(chromosome);
 }
 
 function analyzeCurrentGeneration(){

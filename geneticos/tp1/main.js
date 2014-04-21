@@ -1,6 +1,8 @@
 var POBLATION = 10;
 var GENES = 30;
-var COEF = Math.pow(2,30)-1; 
+var COEF = Math.pow(2,30)-1;
+//precalculated powers of 2
+var POWS = new Array(GENES);
 
 var crossover;
 var mutation;
@@ -9,16 +11,26 @@ var currentCycle;
 
 var chromosome = new Array(POBLATION);
 
-// currentAnalysis[x][y]: [x]>>chromosome [y]: [0]>>fObjective [1]>>fFitness [2]>>roulette
-var currentAnalysis = new Array()
+// currentX[x] [x]>>chromosome
+var currentObjective = new Array(POBLATION);
+var currentFitness = new Array(POBLATION);
+var currentRoulette = new Array(POBLATION);
+
 // bestChromosome: [0]>>generation [1]>>fObjective [2]>>fFitness [3]>>bin [4]>>dec
 var bestChromosome = new Array(5);
 
 // data[x][y]: [x]>>generation [y]: [0]>>max fObjective [1]>>min fObjective [2]>>average fObjective
 var data;
 
+function btnFinish(){
+	alert(Math.floor(Math.random()));
+}
+
 function main(){
-	
+	//initialize POWS
+	for(i=0;i<GENES;i++){
+		POWS[i] = Math.pow(2,i);
+	}
 }
 
 function btnPlay(){
@@ -37,6 +49,11 @@ function btnPlay(){
 	analyzeCurrentGeneration();
 	populateCurrentGenerationTable();
 }
+
+function btnNext(){
+		generateNewGeneration();
+		currentCycle++;
+	}
 
 function btnStop(){
 	//interfaz
@@ -69,13 +86,6 @@ function initializeVars(){
 		data[i] = new Array(3);
 	}
 
-	for(i=0;i<POBLATION;i++){
-		currentAnalysis[i] = new Array(3);
-		for(j=0;j<3;j++){
-			currentAnalysis[i][j] = 0;
-		}
-	}
-
 	currentCycle = 0;
 	bestChromosome[3] = new Array(GENES);
 }
@@ -83,35 +93,37 @@ function initializeVars(){
 function generateInitialPoblation(){
 	for(i=0;i<POBLATION;i++){
 		for(j=0;j<GENES;j++){
-			chromosome[i].push(Math.floor((Math.random()*2)));
+			chromosome[i][j] = Math.floor((Math.random()*2)) ? '1' : '0';
 		}
 	}
 }
 
 function analyzeCurrentGeneration(){
-	fObjective = new Array(POBLATION);
-	fFitness = new Array(POBLATION);
 	fObjectiveSum = 0;
 
 	for(i=0;i<POBLATION;i++){
-		fObjective[i] = 0;
-		fFitness[i] = 0;
+		currentObjective[i] = 0;
+		currentFitness[i] = 0;
 	}
 	//guarda la funcion objetivo de todos los cromosomas
-	for(i=0;i<POBLATION;i++){
-		fObjective[i] = calculatefObjective(binToDec(chromosome[i]));
-		currentAnalysis[i][0] = calculatefObjective(binToDec(chromosome[i]));
+	decimal = 0;
+	for(index=0;index<POBLATION;index++){
+		decimal = binToDec(chromosome[index]);
+		currentObjective[index] = calculatefObjective(decimal);
 	}
 
 	//suma las funciones objetivo
 	for(i=0;i<POBLATION;i++){
-		fObjectiveSum += fObjective[i];
+		fObjectiveSum += currentObjective[i];
 	}
 
 	//calcula el fitness de todos los cromosomas 
 	for(i=0;i<POBLATION;i++){
-		fFitness[i] = fObjective[i] / fObjectiveSum;
-		currentAnalysis[i][1] = fFitness[i];
+		currentFitness[i] = currentObjective[i] / fObjectiveSum;
+	}
+
+	for(i=0;i<POBLATION;i++){
+		currentRoulette[i] = Math.round(currentFitness[i] * 100);
 	}
 
 
@@ -125,12 +137,15 @@ function populateCurrentGenerationTable(){
 		
 		for(j=0;j<4;j++){
 			td[j] = document.createElement("td");
-
-			if(j===0){
-				td[j].innerText = chromosome[i].toString();
-			}
-			else{
-				td[j].innerText = currentAnalysis[i][j];
+			switch(j){
+				case 0:	td[j].innerText = chromosome[i].toString();
+						break;
+				case 1:	td[j].innerText = currentObjective[i];
+						break;
+				case 2:	td[j].innerText = currentFitness[i];
+						break;
+				case 3:	td[j].innerText = currentRoulette[i];
+						break;
 			}
 
 			tr.appendChild(td[j]);
@@ -156,8 +171,38 @@ function calculatefObjective(x){
 
 function binToDec(chrom){
 	dec = 0;
-	for(i=0;i<GENES;i++){
-		dec = dec + chrom[i];
+	indexPow = 0;
+	for(indexChrom = GENES-1;indexChrom>=0;indexChrom--){
+		dec = dec + (parseInt(chrom[indexChrom]) * POWS[indexPow]);
+		indexPow++;
 	}
 	return dec;
+}
+
+function generateNewGeneration(){
+	rouletteSum = 0;
+	for(i=0;i<POBLATION;i++){
+		rouletteSum = rouletteSum + currentRoulette[i];
+	}
+
+	roulette = new Array(rouletteSum);
+
+	indexRoulette = 0;
+	for(i=0;i<POBLATION;i++){
+		j = 0;
+		while(j < currentRoulette[i]){
+			roulette[indexRoulette] = i;
+			j++;
+			indexRoulette++;
+		}
+	}
+
+	parentChromosome = new Array(POBLATION);
+	for(i=0;i<POBLATION;i++){
+		parentChromosome[i] = new Array(GENES);
+	}
+
+	for(i=0;i<POBLATION;i++){
+		Math.floor((Math.random()*2));
+	}
 }

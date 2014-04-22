@@ -16,8 +16,9 @@ var currentObjective = new Array(POPULATION);
 var currentFitness = new Array(POPULATION);
 var currentRoulette = new Array(POPULATION);
 
-// bestChromosome: [0]>>generation [1]>>fObjective [2]>>fFitness [3]>>bin [4]>>dec
+// bestChromosome: [0]>>generation [1]>>fObjective [2]>>fFitness [3]>>dec [4]>>bin
 var bestChromosome = new Array(5);
+var bestCurrentChromosome = new Array(5);
 
 // data[x][y]: [x]>>generation [y]: [0]>>max fObjective [1]>>min fObjective [2]>>average fObjective
 var data;
@@ -64,6 +65,8 @@ function btnNext(){
 		currentCycle++;
 		analyzeCurrentGeneration();
 		populateCurrentGenerationTable();
+		updateCurrentBestChromosomeInfo();
+		updateBestChromosomeInfo();
 	}
 	else{
 		document.getElementById("next").disabled = true;
@@ -102,8 +105,13 @@ function initializeVars(){
 		data[i] = new Array(3);
 	}
 
+	//generation 0
 	currentCycle = 0;
-	bestChromosome[3] = new Array(GENES);
+
+	for(i=0;i<4;i++){
+		bestChromosome[i] = 0;
+	}
+	bestChromosome[4] = new Array(GENES);
 }
 
 function generateInitialPOPULATION(){
@@ -138,11 +146,29 @@ function analyzeCurrentGeneration(){
 		currentFitness[i] = currentObjective[i] / fObjectiveSum;
 	}
 
+	//best chromosome of the generation
+	for(index=0;index<POPULATION;index++){
+		if(currentObjective[index] > bestCurrentChromosome[1]){
+			bestCurrentChromosome[0] = currentCycle;
+			bestCurrentChromosome[1] = currentObjective[index];
+			bestCurrentChromosome[2] = currentFitness[index];
+			bestCurrentChromosome[3] = binToDec(chromosome[index]);
+			bestCurrentChromosome[4] = chromosome[index];
+		}
+	}
+
+	//is this best chromosome the best chromosome of all time?
+	if(bestCurrentChromosome[1] > bestChromosome[1]){
+		bestChromosome[0] = bestCurrentChromosome[0];
+		bestChromosome[1] = bestCurrentChromosome[1];
+		bestChromosome[2] = bestCurrentChromosome[2];
+		bestChromosome[3] = bestCurrentChromosome[3];
+		bestChromosome[4] = bestCurrentChromosome[4];
+	}
+
 	for(i=0;i<POPULATION;i++){
 		currentRoulette[i] = Math.round(currentFitness[i] * 100);
 	}
-
-
 }
 
 function populateCurrentGenerationTable(){
@@ -156,20 +182,23 @@ function populateCurrentGenerationTable(){
 			switch(j){
 				case 0:	td[j].innerText = chromosome[i].toString();
 						break;
-				case 1:	td[j].innerText = currentObjective[i];
+				case 1:	td[j].innerText = currentObjective[i].toFixed(4);
 						break;
-				case 2:	td[j].innerText = currentFitness[i];
+				case 2:	td[j].innerText = currentFitness[i].toFixed(4);
 						break;
 				case 3:	td[j].innerText = currentRoulette[i];
 						break;
 			}
 
 			tr.appendChild(td[j]);
-		}
-		
+		}		
 
 		table.appendChild(tr);
 	}
+}
+
+function updateCurrentBestChromosomeInfo(){
+	
 }
 
 function cleanCurrentGenerationTable(){

@@ -1,4 +1,4 @@
-var POBLATION = 10;
+var POPULATION = 10;
 var GENES = 30;
 var COEF = Math.pow(2,30)-1;
 //precalculated powers of 2
@@ -9,12 +9,12 @@ var mutation;
 var cycles;
 var currentCycle;
 
-var chromosome = new Array(POBLATION);
+var chromosome = new Array(POPULATION);
 
 // currentX[x] [x]>>chromosome
-var currentObjective = new Array(POBLATION);
-var currentFitness = new Array(POBLATION);
-var currentRoulette = new Array(POBLATION);
+var currentObjective = new Array(POPULATION);
+var currentFitness = new Array(POPULATION);
+var currentRoulette = new Array(POPULATION);
 
 // bestChromosome: [0]>>generation [1]>>fObjective [2]>>fFitness [3]>>bin [4]>>dec
 var bestChromosome = new Array(5);
@@ -23,7 +23,14 @@ var bestChromosome = new Array(5);
 var data;
 
 function btnFinish(){
-	alert(Math.floor(Math.random()));
+	for(;currentCycle<cycles;currentCycle++){
+		generateNewGeneration();
+		analyzeCurrentGeneration();
+	}
+	cleanCurrentGenerationTable();
+	populateCurrentGenerationTable();
+	document.getElementById("next").disabled = true;
+	document.getElementById("finish").disabled = true;	
 }
 
 function main(){
@@ -45,15 +52,24 @@ function btnPlay(){
 	document.getElementById("cycles").disabled = true;
 	
 	initializeVars();
-	generateInitialPoblation();
+	generateInitialPOPULATION();
 	analyzeCurrentGeneration();
 	populateCurrentGenerationTable();
 }
 
 function btnNext(){
+	if(currentCycle < cycles){
+		cleanCurrentGenerationTable();
 		generateNewGeneration();
 		currentCycle++;
+		analyzeCurrentGeneration();
+		populateCurrentGenerationTable();
 	}
+	else{
+		document.getElementById("next").disabled = true;
+		document.getElementById("finish").disabled = true;	
+	}
+}
 
 function btnStop(){
 	//interfaz
@@ -71,7 +87,7 @@ function btnStop(){
 
 function initializeVars(){
 	//inicializa arreglo de cromosomas
-	for(i=0;i<POBLATION;i++){
+	for(i=0;i<POPULATION;i++){
 		chromosome[i] = new Array(GENES);
 	}
 
@@ -90,8 +106,8 @@ function initializeVars(){
 	bestChromosome[3] = new Array(GENES);
 }
 
-function generateInitialPoblation(){
-	for(i=0;i<POBLATION;i++){
+function generateInitialPOPULATION(){
+	for(i=0;i<POPULATION;i++){
 		for(j=0;j<GENES;j++){
 			chromosome[i][j] = Math.floor((Math.random()*2)) ? '1' : '0';
 		}
@@ -101,28 +117,28 @@ function generateInitialPoblation(){
 function analyzeCurrentGeneration(){
 	fObjectiveSum = 0;
 
-	for(i=0;i<POBLATION;i++){
+	for(i=0;i<POPULATION;i++){
 		currentObjective[i] = 0;
 		currentFitness[i] = 0;
 	}
 	//guarda la funcion objetivo de todos los cromosomas
 	decimal = 0;
-	for(index=0;index<POBLATION;index++){
+	for(index=0;index<POPULATION;index++){
 		decimal = binToDec(chromosome[index]);
 		currentObjective[index] = calculatefObjective(decimal);
 	}
 
 	//suma las funciones objetivo
-	for(i=0;i<POBLATION;i++){
+	for(i=0;i<POPULATION;i++){
 		fObjectiveSum += currentObjective[i];
 	}
 
 	//calcula el fitness de todos los cromosomas 
-	for(i=0;i<POBLATION;i++){
+	for(i=0;i<POPULATION;i++){
 		currentFitness[i] = currentObjective[i] / fObjectiveSum;
 	}
 
-	for(i=0;i<POBLATION;i++){
+	for(i=0;i<POPULATION;i++){
 		currentRoulette[i] = Math.round(currentFitness[i] * 100);
 	}
 
@@ -132,7 +148,7 @@ function analyzeCurrentGeneration(){
 function populateCurrentGenerationTable(){
 	table = document.getElementById("current-generation-table");
 	td = new Array(4);
-	for(i=0;i<POBLATION;i++){
+	for(i=0;i<POPULATION;i++){
 		tr = document.createElement("tr");
 		
 		for(j=0;j<4;j++){
@@ -158,7 +174,7 @@ function populateCurrentGenerationTable(){
 
 function cleanCurrentGenerationTable(){
 	table = document.getElementById("current-generation-table");
-	for(i=1;i<POBLATION+1;i++){
+	for(i=1;i<POPULATION+1;i++){
 		table.deleteRow(1);
 	}
 }
@@ -180,15 +196,17 @@ function binToDec(chrom){
 }
 
 function generateNewGeneration(){
+	parentsChromosome = new Array(POPULATION);
 	rouletteSum = 0;
-	for(i=0;i<POBLATION;i++){
+	
+	for(i=0;i<POPULATION;i++){
 		rouletteSum = rouletteSum + currentRoulette[i];
 	}
 
 	roulette = new Array(rouletteSum);
 
 	indexRoulette = 0;
-	for(i=0;i<POBLATION;i++){
+	for(i=0;i<POPULATION;i++){
 		j = 0;
 		while(j < currentRoulette[i]){
 			roulette[indexRoulette] = i;
@@ -197,12 +215,67 @@ function generateNewGeneration(){
 		}
 	}
 
-	parentChromosome = new Array(POBLATION);
-	for(i=0;i<POBLATION;i++){
-		parentChromosome[i] = new Array(GENES);
+	for(i=0;i<POPULATION;i++){
+		parentsChromosome[i] = new Array(GENES);
 	}
 
-	for(i=0;i<POBLATION;i++){
-		Math.floor((Math.random()*2));
+	//select parents
+	for(i=0;i<POPULATION;i++){
+		indexRoulette = Math.floor((Math.random()*rouletteSum));
+		parentsChromosome[i] = chromosome[roulette[indexRoulette]];
 	}
+
+	//breeding
+	for(indexChrom=0;indexChrom<POPULATION/2;indexChrom++){
+		//crossover
+		if(Math.floor((Math.random()*100)+1) < crossover){
+			childrenChromosome = doCrossover(parentsChromosome[indexChrom*2],parentsChromosome[indexChrom*2+1]);
+		}
+		else{
+			childrenChromosome = parentsChromosome[indexChrom*2].concat(parentsChromosome[indexChrom*2+1]);
+		}
+
+		//first child mutation
+		if(Math.floor((Math.random()*100)+1) < mutation){
+			chromosome[indexChrom*2] = doMutate(childrenChromosome.slice(0,GENES));
+		}
+		else{
+			chromosome[indexChrom*2] = childrenChromosome.slice(0,GENES);				
+		}
+
+		//second child mutation
+		if(Math.floor((Math.random()*100)+1) < mutation){
+			chromosome[indexChrom*2+1] = doMutate(childrenChromosome.slice(GENES,GENES*2));
+		}
+		else{
+			chromosome[indexChrom*2+1] = childrenChromosome.slice(GENES,GENES*2);				
+		}
+	}
+}
+
+//return a Array[GENES*2] with the children
+function doCrossover(firstParent, secondParent){
+	firstChild = new Array(GENES);
+	secondChild = new Array(GENES);
+	cutIndex = 20;//Math.floor((Math.random()*(GENES)));
+	
+	for(index=0;index<cutIndex;index++){
+		firstChild[index] = firstParent[index];
+		secondChild[index] = secondParent[index];
+	}
+
+	for(index=cutIndex;index<GENES;index++){
+		firstChild[index] = secondParent[index];
+		secondChild[index] = firstParent[index];
+	}
+
+	return firstChild.concat(secondChild);
+}
+
+//return a Array[GENES] with mutate children
+function doMutate(childChromosome){
+	randomGEN = Math.floor((Math.random()*GENES));
+	
+	childChromosome[randomGEN] = childChromosome[randomGEN] === "1" ? "0" : "1";
+	return childChromosome;
 }

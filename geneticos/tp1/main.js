@@ -18,21 +18,11 @@ var currentRoulette = new Array(POPULATION);
 
 // bestChromosome: [0]>>generation [1]>>fObjective [2]>>fFitness [3]>>dec [4]>>bin
 var bestChromosome = new Array(5);
+//same bestChromosome, except [4] >> average generation fObjective
 var bestCurrentChromosome = new Array(5);
 
 // data[x][y]: [x]>>generation [y]: [0]>>max fObjective [1]>>min fObjective [2]>>average fObjective
 var data;
-
-function btnFinish(){
-	for(;currentCycle<cycles;currentCycle++){
-		generateNewGeneration();
-		analyzeCurrentGeneration();
-	}
-	cleanCurrentGenerationTable();
-	populateCurrentGenerationTable();
-	document.getElementById("next").disabled = true;
-	document.getElementById("finish").disabled = true;	
-}
 
 function main(){
 	//initialize POWS
@@ -56,22 +46,43 @@ function btnPlay(){
 	generateInitialPOPULATION();
 	analyzeCurrentGeneration();
 	populateCurrentGenerationTable();
+	updateCurrentBestChromosomeInfo();
+	updateBestChromosomeInfo();
+	currentCycle++;
 }
 
 function btnNext(){
 	if(currentCycle < cycles){
 		cleanCurrentGenerationTable();
 		generateNewGeneration();
-		currentCycle++;
 		analyzeCurrentGeneration();
 		populateCurrentGenerationTable();
 		updateCurrentBestChromosomeInfo();
 		updateBestChromosomeInfo();
+		currentCycle++;
+
+		if(currentCycle===cycles){
+			document.getElementById("next").disabled = true;
+			document.getElementById("finish").disabled = true;	
+		}
 	}
 	else{
 		document.getElementById("next").disabled = true;
 		document.getElementById("finish").disabled = true;	
 	}
+}
+
+function btnFinish(){
+	for(;currentCycle<cycles;currentCycle++){
+		generateNewGeneration();
+		analyzeCurrentGeneration();
+	}
+	cleanCurrentGenerationTable();
+	populateCurrentGenerationTable();
+	updateCurrentBestChromosomeInfo();
+	updateBestChromosomeInfo();
+	document.getElementById("next").disabled = true;
+	document.getElementById("finish").disabled = true;	
 }
 
 function btnStop(){
@@ -84,6 +95,9 @@ function btnStop(){
 	document.getElementById("crossover").disabled = false;
 	document.getElementById("mutation").disabled = false;
 	document.getElementById("cycles").disabled = false;
+	document.getElementById("text-current-generation").innerHTML = "Generaci&oacute;n: -";
+	document.getElementById("text-current-average").innerHTML = "Promedio F. Objetivo: -";
+	document.getElementById("text-current-max").innerHTML = "Valor: -";
 
 	cleanCurrentGenerationTable();
 }
@@ -138,7 +152,7 @@ function analyzeCurrentGeneration(){
 
 	//suma las funciones objetivo
 	for(i=0;i<POPULATION;i++){
-		fObjectiveSum += currentObjective[i];
+		fObjectiveSum = fObjectiveSum + currentObjective[i];
 	}
 
 	//calcula el fitness de todos los cromosomas 
@@ -147,15 +161,19 @@ function analyzeCurrentGeneration(){
 	}
 
 	//best chromosome of the generation
+	for(i=0;i<4;i++){
+		bestCurrentChromosome[i] = 0;
+	}
+
 	for(index=0;index<POPULATION;index++){
 		if(currentObjective[index] > bestCurrentChromosome[1]){
 			bestCurrentChromosome[0] = currentCycle;
 			bestCurrentChromosome[1] = currentObjective[index];
 			bestCurrentChromosome[2] = currentFitness[index];
 			bestCurrentChromosome[3] = binToDec(chromosome[index]);
-			bestCurrentChromosome[4] = chromosome[index];
 		}
 	}
+	bestCurrentChromosome[4] = fObjectiveSum / POPULATION;
 
 	//is this best chromosome the best chromosome of all time?
 	if(bestCurrentChromosome[1] > bestChromosome[1]){
@@ -163,7 +181,6 @@ function analyzeCurrentGeneration(){
 		bestChromosome[1] = bestCurrentChromosome[1];
 		bestChromosome[2] = bestCurrentChromosome[2];
 		bestChromosome[3] = bestCurrentChromosome[3];
-		bestChromosome[4] = bestCurrentChromosome[4];
 	}
 
 	for(i=0;i<POPULATION;i++){
@@ -198,7 +215,15 @@ function populateCurrentGenerationTable(){
 }
 
 function updateCurrentBestChromosomeInfo(){
-	
+	document.getElementById("text-current-generation").innerHTML = "Generaci&oacute;n: " + (bestCurrentChromosome[0] + 1);
+	document.getElementById("text-current-average").innerHTML = "Promedio F. Objetivo: " + bestCurrentChromosome[4].toFixed(4);
+	document.getElementById("text-current-max").innerHTML = "Valor: " + bestCurrentChromosome[3];
+}
+
+function updateBestChromosomeInfo(){
+	document.getElementById("text-best-generation").innerHTML = "Generaci&oacute;n: " + (bestChromosome[0] + 1);
+	document.getElementById("text-best-objetive").innerHTML = "F. Objetivo: " + bestChromosome[1].toFixed(4);
+	document.getElementById("text-best-decimal").innerHTML = "Valor: " + bestChromosome[3];	
 }
 
 function cleanCurrentGenerationTable(){

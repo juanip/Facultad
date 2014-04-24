@@ -1,0 +1,20 @@
+
+public class Main {
+	public static void main(String[] args) {
+		Cliente cliente = new Cliente(1,"0123456789"); //id y razon social
+	
+		Venta venta1 = new Venta(1,0.1); //nro factura y descuento
+		Venta venta2 = new Venta(2,0.25);
+		
+		Articulo plancha = new Articulo();
+		Articulo arvejas = new Articulo();
+		Articulo mochila = new Articulo();
+		Articulo lentes = new Articulo();
+		Articulo arbolDeNavidad = new Articulo();
+		Articulo fertilizante = new Articulo();
+		
+		
+		
+	}
+
+}

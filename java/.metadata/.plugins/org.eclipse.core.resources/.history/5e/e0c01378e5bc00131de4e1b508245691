@@ -1,0 +1,54 @@
+package clase3;
+
+public class Ejercicio1 {
+	private int[] numeros = new int[10];
+	
+	public void setArray(){
+		carga();
+	}
+	
+	public int[] getArray(){
+		return this.numeros;
+	}
+	
+	private void carga(){
+		for(int i=0;i<10;i++){
+			numeros[i] = 15+(i*3);		
+			numeros[i] = (numeros[i]%2) == 0 ? numeros[i]/2 : numeros[i];
+		}
+	}
+	
+	public int getSumatoria(){
+		int sumatoria = 0;
+		for(int i=0;i<10;i++){
+			sumatoria =+ numeros[i];
+		}
+		return sumatoria;
+	}
+	
+	public float getPromedio(){
+		return getSumatoria() / 2;
+	}
+	
+	public int[] getMenores(){
+		int indice = 0;
+		int[] menores;
+		
+		for(int i=0;i<10;i++){
+			if(this.numeros[i]<getPromedio()){
+				indice++;
+			}
+		}
+		
+		menores = new int[indice];
+		
+		for(int i=0, j=0;i<10;i++){
+			if(numeros[i]<getPromedio()){
+				menores[j] = numeros[i];
+				j++;
+			}
+		}
+		
+		return menores;
+	}
+}

@@ -1,0 +1,4 @@
+INDEX VERSION 1.126+/media/multimedia/Desarrollo/git/Java/.metadata/.plugins/org.eclipse.jdt.core
+1078282445.index
+1731462620.index
+476468457.index

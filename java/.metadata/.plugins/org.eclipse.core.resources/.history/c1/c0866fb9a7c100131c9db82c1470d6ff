@@ -1,0 +1,6 @@
+package clase3;
+
+public class Ejercicio2 {
+	
+	private string[] palabras = new String[5];
+}

@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+
+
+public class Cliente {
+	private int id;
+	private String razonSocial;
+	private ArrayList<Venta> ventas = new ArrayList<Venta>();
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public String getRazonSocial() {
+		return razonSocial;
+	}
+	
+	public void setRazonSocial(String razonSocial) {
+		this.razonSocial = razonSocial;
+	}	
+	
+}

@@ -1,0 +1,10 @@
+package clase4;
+
+public class Laptop {
+	private double weight;
+	private String ensurenceCompany;
+	private int ensurenceContract;
+	private String tactilTechnology;
+	private String maxResolution;
+	private String displaySize;
+}

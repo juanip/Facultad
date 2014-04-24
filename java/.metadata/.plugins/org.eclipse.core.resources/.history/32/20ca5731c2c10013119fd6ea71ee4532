@@ -1,0 +1,23 @@
+package clase4;
+
+public class Phone extends Device{
+	private int number;
+	private int freeSms;
+	private double freeCallMinutes;
+	private int usedSms;
+	private double usedCallMinutes;
+	private double usedInternet;
+	
+	public int getRemainingSms(){
+		
+	}
+	
+	public double getRemainsCallMinutes(){
+		
+	}
+	
+	public double getRemainingInternet(){
+		
+	}
+	
+}

@@ -1,0 +1,13 @@
+package clase3;
+
+public class Ejercicio2 {
+	
+	private String[] palabras = new String[5];
+
+	public void setPalabras(String[] palabras){
+		
+		for(int i=0;i<palabras.length;i++){
+			this.palabras[i] = palabras[i];
+		}
+	}
+}

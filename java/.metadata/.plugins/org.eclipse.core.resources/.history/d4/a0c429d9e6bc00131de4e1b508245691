@@ -1,0 +1,7 @@
+package clase3;
+
+public class Ejercicio2 {
+	
+	private string[] palabras = {"hola","como","andas","bien","vos"};
+
+}

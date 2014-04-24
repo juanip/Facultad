@@ -1,0 +1,31 @@
+
+public class Venta {
+	private int nroFactura;
+	private double porcetajeDescuento;
+	private DetalleVenta[] detalleVenta;
+	
+	public int getNroFactura() {
+		return nroFactura;
+	}
+	
+	public void setNroFactura(int nroFactura) {
+		this.nroFactura = nroFactura;
+	}
+	
+	public double getPorcetajeDescuento() {
+		return porcetajeDescuento;
+	}
+	
+	public void setPorcetajeDescuento(double porcetajeDescuento) {
+		this.porcetajeDescuento = porcetajeDescuento;
+	}
+	
+	public double getTotal(){
+		
+	}
+	
+	public double getTotalSinDto(){
+		
+	}
+	
+}

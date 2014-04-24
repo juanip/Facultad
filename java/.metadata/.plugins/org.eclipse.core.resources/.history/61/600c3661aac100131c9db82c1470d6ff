@@ -1,0 +1,8 @@
+
+public class DetalleVenta {
+	private double cantidad;
+
+	public double getSubTotal(){
+		
+	}
+}

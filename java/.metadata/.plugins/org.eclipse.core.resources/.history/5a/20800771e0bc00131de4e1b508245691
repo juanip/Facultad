@@ -1,0 +1,18 @@
+package clase3;
+
+public class Ejercicio1 {
+	private int[] numeros = new int[10];
+	
+	public void setArray(){
+		
+	}
+	
+	public int[] getArray(){
+		return this.numeros;
+	}
+	
+	private void carga(){
+		
+	}
+	
+}

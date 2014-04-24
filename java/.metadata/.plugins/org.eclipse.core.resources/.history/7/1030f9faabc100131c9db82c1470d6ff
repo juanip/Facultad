@@ -1,0 +1,18 @@
+
+public class DetalleVenta {
+	private double cantidad;
+	private Articulo articulo;
+
+	public void setArticulo(Articulo articulo){
+		this.articulo = articulo;
+	}
+	
+	public Articulo getArticulo(){
+		return this.articulo;
+	}
+	
+	public double getSubtotal(){
+		return articulo.getPrecio() * this.cantidad;
+		
+	}
+}

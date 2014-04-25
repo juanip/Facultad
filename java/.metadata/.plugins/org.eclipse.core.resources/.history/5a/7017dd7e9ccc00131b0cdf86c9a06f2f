@@ -1,0 +1,11 @@
+public class Desktop extends PC {
+	private int box;
+	
+	public void setBox(int box){
+		this.box = box;
+	}
+	
+	public int getBox(){
+		return this.box;
+	}
+}

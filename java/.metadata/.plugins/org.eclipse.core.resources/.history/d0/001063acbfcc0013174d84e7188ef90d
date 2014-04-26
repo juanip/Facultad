@@ -1,0 +1,19 @@
+package manejoDeErrores;
+
+import javax.swing.*;
+
+public class Principal {
+	public static void main(String[] args) {
+		String rta = JOptionPane.showInputDialog(null, "Ingrese un número", "Ejemplo TryCatch", JOptionPane.INFORMATION_MESSAGE);
+		
+		int nro = Integer.parseInt(rta);
+		String mensaje;
+		if(nro < 10){
+			mensaje = "menor";
+		}
+		JOptionPane.showMessageDialog(null, );
+		
+		
+	}
+
+}

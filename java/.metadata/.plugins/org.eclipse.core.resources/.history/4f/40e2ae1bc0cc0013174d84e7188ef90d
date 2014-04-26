@@ -1,0 +1,26 @@
+package manejoDeErrores;
+
+import javax.swing.*;
+
+public class Principal {
+	public static void main(String[] args) {
+		String rta = JOptionPane.showInputDialog(null, "Ingrese un número", "Ejemplo TryCatch", JOptionPane.INFORMATION_MESSAGE);
+		
+		int nro = Integer.parseInt(rta);
+		String mensaje;
+		if(nro < 10){
+			mensaje = "El número ingresado es menor que diez";
+		}
+		else if(nro > 10){
+			mensaje = "El número ingresado es mayor que diez";
+		}
+		else{
+			mensaje = "Hey mannn, pusiste un diés";
+		}
+		
+		JOptionPane.showMessageDialog(null, mensaje);
+		
+		
+	}
+
+}

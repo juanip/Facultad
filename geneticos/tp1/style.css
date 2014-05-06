@@ -106,7 +106,9 @@ h2 {
 .current-generation th, .current-generation td, .current-generation tr {
 	border:			solid 1px black;
 }
-
+.current-generation th {
+	background-color:	#DDDDDD;
+}
 
 .data {
 	display:		none;
@@ -120,8 +122,6 @@ h2 {
 	border:			solid 1px black;
 }
 
-
-footer {
-	display:		none;
+.data th {
+	background-color:	#DDDDDD;
 }
-

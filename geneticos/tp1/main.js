@@ -1,35 +1,28 @@
 var POBLACION = 10;
 var GENES = 30;
 var COEF = Math.pow(2,30)-1;
-//precalculated powers of 2
-var POWS = new Array(GENES);
 
 var crossover;
 var mutacion;
 var ciclos;
 var cicloActual;
+var elitismo; //boolean
 
 var cromosoma = new Array(POBLACION);
 
-// actualX[x] [x]>>cromosoma
+// var[x] [x]>>cromosoma
 var fObjetivoActual = new Array(POBLACION);
 var fFitnessActual = new Array(POBLACION);
 var ruletaActual = new Array(POBLACION);
+var ruleta;
 
-// mejorCromosoma: [0]>>generation [1]>>fObjective [2]>>fFitness [3]>>dec [4]>>bin
+// mejorCromosoma: [0]>>generacion [1]>>fObjetivo [2]>>fFitness [3]>>dec [4]>>bin
 var mejorCromosoma = new Array(5);
-//same mejorCromosoma, except [4] >> average generation fObjective
+//igual que mejorCromosoma, excepto [4] >> promedio fObjetive¿o en la generacion
 var mejorCromosomaActual = new Array(5);
 
-// data[x][y]: [x]>>generation [y]: [0]>>max fObjective [1]>>min fObjective [2]>>average fObjective
+// data[x][y]: [x]>>generacion [y]: [0]>>max fObjetivo [1]>>min fObjetivo [2]>>primedio fObjetivo
 var data;
-
-function main(){
-	//initialize POWS
-	for(i=0;i<GENES;i++){
-		POWS[i] = Math.pow(2,i);
-	}
-}
 
 function btnPlay(){
 	//interfaz
@@ -128,6 +121,7 @@ function initVars(){
 	crossover = document.getElementById("crossover").value;
 	mutacion = document.getElementById("mutacion").value;
 	ciclos = document.getElementById("ciclos").value;
+	elitismo = document.getElementById("elitismo").checked;
 
 	//inicializa historico de datos
 	data = new Array(ciclos);
@@ -135,7 +129,7 @@ function initVars(){
 		data[i] = new Array(3);
 	}
 
-	//generation 0
+	//generacion 0
 	cicloActual = 0;
 
 	for(i=0;i<4;i++){
@@ -217,7 +211,7 @@ function llenarTablaGeneracioActual(){
 		for(j=0;j<3;j++){
 			td[j] = document.createElement("td");
 			switch(j){
-				case 0:	td[j].innerText = cromosoma[i].join(" ");
+				case 0:	td[j].innerText = cromosoma[i].join(' ');
 						break;
 				case 1:	td[j].innerText = fObjetivoActual[i].toFixed(4);
 						break;
@@ -240,7 +234,7 @@ function actualizarInfoMejorCromosomaActual(){
 
 function ActualizarInfoMejorCromosoma(){
 	document.getElementById("text-best-generation").innerHTML = "Generaci&oacute;n: " + (mejorCromosoma[0] + 1);
-	document.getElementById("text-best-objetive").innerHTML = "F. Objetivo: " + mejorCromosoma[1].toFixed(4);
+	document.getElementById("text-best-objetive").innerHTML = "F. Objetivo: " + mejorCromosoma[1].toFixed(9);
 	document.getElementById("text-best-decimal").innerHTML = "Valor: " + mejorCromosoma[3];	
 }
 
@@ -266,58 +260,119 @@ function calcularFObjetivo(x){
 }
 
 function binToDec(chrom){
-	dec = 0;
-	indexPow = 0;
-	for(indexChrom = GENES-1;indexChrom>=0;indexChrom--){
-		dec = dec + (parseInt(chrom[indexChrom]) * POWS[indexPow]);
-		indexPow++;
-	}
-	return dec;
+	return parseInt(chrom.join(''),2);
 }
 
 function crearNuevaGeneracion(){
 
-	ruletaSuma = armarRuleta();
+	armarRuleta();
 	cromosomasPadres = new Array(POBLACION);
 
-
-	for(i=0;i<POBLACION;i++){
+	for(i=0;i<POBLACION;i++) {
 		cromosomasPadres[i] = new Array(GENES);
 	}
 
-	//select parents
-	for(i=0;i<POBLACION;i++){
-		indexRuleta = Math.floor((Math.random()*ruletaSuma));
+	//elegir padres
+	for(i=0;i<POBLACION;i++) {
+		indexRuleta = Math.floor((Math.random()*100));
 		cromosomasPadres[i] = cromosoma[ruleta[indexRuleta]];
 	}
 
-	//breeding
-	for(indexChrom=0;indexChrom<POBLACION/2;indexChrom++){
+	if(elitismo) {
+		nacimientosElitistas(cromosomasPadres);
+	}
+	else {
+		nacimientos(cromosomasPadres);
+	}
+	
+}
+
+function nacimientos(cromosomasPadres) {
+	for(indexChrom=0;indexChrom<POBLACION/2;indexChrom++) {
 		//crossover
-		if(Math.floor((Math.random()*100)+1) < crossover){
+		if(Math.floor(Math.random()*100) < crossover) {
 			cromosomasHijos = doCrossover(cromosomasPadres[indexChrom*2],cromosomasPadres[indexChrom*2+1]);
 		}
-		else{
+		else {
 			cromosomasHijos = cromosomasPadres[indexChrom*2].concat(cromosomasPadres[indexChrom*2+1]);
 		}
 
 		//first child mutacion
-		if(Math.floor((Math.random()*100)+1) < mutacion){
+		if(Math.floor(Math.random()*100) < mutacion) {
 			cromosoma[indexChrom*2] = hacerMutacion(cromosomasHijos.slice(0,GENES));
 		}
-		else{
+		else {
 			cromosoma[indexChrom*2] = cromosomasHijos.slice(0,GENES);				
 		}
 
 		//second child mutacion
-		if(Math.floor((Math.random()*100)+1) < mutacion){
+		if(Math.floor(Math.random()*100) < mutacion) {
 			cromosoma[indexChrom*2+1] = hacerMutacion(cromosomasHijos.slice(GENES,GENES*2));
 		}
-		else{
+		else {
 			cromosoma[indexChrom*2+1] = cromosomasHijos.slice(GENES,GENES*2);				
 		}
 	}
 }
+
+function nacimientosElitistas(cromosomasPadres) {
+	cromosomasOrdenados = ordenarCromosomas();
+
+	//los dos mejores cromosomas pasan intactos a la prox generacion
+	cromosoma[0] = cromosomasOrdenados[8];
+	cromosoma[1] = cromosomasOrdenados[9];
+		
+	for(indexChrom=2;indexChrom<POBLACION/2;indexChrom++) {
+		//crossover
+		if(Math.floor(Math.random()*100) < crossover) {
+			cromosomasHijos = doCrossover(cromosomasPadres[indexChrom*2],cromosomasPadres[indexChrom*2+1]);
+		}
+		else {
+			cromosomasHijos = cromosomasPadres[indexChrom*2].concat(cromosomasPadres[indexChrom*2+1]);
+		}
+
+		//mutacion primer hijo
+		if(Math.floor(Math.random()*100) < mutacion) {
+			cromosoma[indexChrom*2] = hacerMutacion(cromosomasHijos.slice(0,GENES));
+		}
+		else {
+			cromosoma[indexChrom*2] = cromosomasHijos.slice(0,GENES);				
+		}
+
+		//mutacion segundo hijo
+		if(Math.floor(Math.random()*100) < mutacion) {
+			cromosoma[indexChrom*2+1] = hacerMutacion(cromosomasHijos.slice(GENES,GENES*2));
+		}
+		else {
+			cromosoma[indexChrom*2+1] = cromosomasHijos.slice(GENES,GENES*2);				
+		}
+	}
+}
+
+function ordenarCromosomas() {
+	cromosomaAux = cromosoma;
+	for(i=0;i<10;i++) {
+		cromosomaAux[i] = cromosomaAux[i].join('');
+	}
+
+	aux = "";
+	for(i=1;i<POBLACION-1;i++) {
+		for(j=0;j<POBLACION;j++) {
+			if(parseInt(cromosomaAux[j],2)>parseInt(cromosomaAux[j+1],2)) {
+				aux = cromosomaAux[j];
+				cromosomaAux[j] = cromosomaAux[j+1];
+				cromosomaAux[j+1] = aux;
+			}
+		}
+	}
+
+	for(i=0;i<10;i++) {
+		cromosomaAux[i] = cromosomaAux[i].split('');
+	}
+
+	return cromosomaAux;
+}
+
 
 function armarRuleta() {
 	ruletaSuma = 0;
@@ -328,130 +383,42 @@ function armarRuleta() {
 		ruletaSuma += ruletaActual[i];
 	}
 
-	ruleta = new Array(ruletaSuma);
+	ruletaAux = new Array(ruletaSuma);
 
 	indexRuleta = 0;
 	for(i=0;i<POBLACION;i++){
 		j = 0;
 		while(j < ruletaActual[i]){
-			ruleta[indexRuleta] = i;
+			ruletaAux[indexRuleta] = i;
 			j++;
 			indexRuleta++;
 		}
 	}
 
-	return ruletaSuma;
+	masacre = 100 - ruletaSuma;
+
+	for(i=0;i<masacre;i++) {
+		indice = Math.floor((Math.random()*ruletaSuma)+1);
+		ruletaAux[indice] = "no";
+	}
+
+	ruleta = new Array(100);
+	indiceRuleta = 0;
+	for(i=0;i<ruletaSuma;i++) {
+		if(ruletaAux[i]!=="no") {
+			ruleta[indiceRuleta] = ruletaAux[i];
+			indiceRuleta++;
+		}
+	}
+
+	return 100;
 }
 
-function crearNuevaGeneracionOld(){
-	cromosomasPadres = new Array(POBLACION);
-	ruletaSuma = 0;
-	
-	for(i=0;i<POBLACION;i++){
-		ruletaActual[i] = Math.ceil(fFitnessActual[i] * 100);
-		if(ruletaActual[i]===0) ruletaActual[i] = 1;
-		ruletaSuma += ruletaActual[i];
-	}
-
-	//ordenar ruleta 
-	//ruletaOrdenada => cant de posiciones en ruleta
-	//ruletaOrdenadaIndex => a que cromosoma corresponde esa cant de posiciones
-	ruletaOrdenada = new Array(POBLACION);
-	ruletaOrdenadaIndex = new Array(POBLACION);
-	for(i=0;i<POBLACION;i++){
-		ruletaOrdenada[i] = ruletaActual[i];
-		ruletaOrdenadaIndex[i] = i;
-	}
-
-	aux = 0;
-	auxIndex = 0;
-	for(i=1;i<POBLACION-1;i++){
-		for(j=0;j<POBLACION;j++){
-			if(ruletaOrdenada[j]>ruletaOrdenada[j+1]){
-				aux = ruletaOrdenada[j];
-				auxIndex = ruletaOrdenadaIndex[j];
-				
-				ruletaOrdenada[j] = ruletaOrdenada[j+1];
-				ruletaOrdenadaIndex[j] = ruletaOrdenadaIndex[j+1];
-				
-				ruletaOrdenada[j+1] = aux;
-				ruletaOrdenadaIndex[j+1] = auxIndex;
-			}
-		}
-	}
-
-
-	cromosomasOrdenadosParaRuleta = new Array(POBLACION);
-	for(i=0,j=9;i<POBLACION;i++,j--){
-		cromosomasOrdenadosParaRuleta[i] = cromosoma[ruletaOrdenadaIndex[j]];
-	}
-
-
-	//Rellena ruleta 
-	Ruleta = new Array();
-	RuletaAux = new Array(ruletaSuma);
-
-	indexRuleta = 0;
-	for(i=0;i<POBLACION;i++){
-		j = 0;
-		while(j < ruletaOrdenada[i]){
-			if(indexRuleta>99) break;
-			RuletaAux[indexRuleta] = ruletaOrdenadaIndex[i];
-			j++;
-			indexRuleta++;
-		}
-		if(indexRuleta>99) break;
-	}
-
-	//Limpia ruleta de espacios vacios
-	for(i=0;i<RuletaAux.length;i++){
-		if(RuletaAux[i]>=0) Ruleta[i] = RuletaAux[i];
-	
-	}
-
-	for(i=0;i<POBLACION;i++){
-		cromosomasPadres[i] = new Array(GENES);
-	}
-
-	//select parents
-	for(i=0;i<POBLACION;i++){
-		indexRuleta = Math.floor((Math.random()*100));
-		cromosomasPadres[i] = cromosomasOrdenadosParaRuleta[Ruleta[indexRuleta]];
-	}
-
-	//breeding
-	for(indexChrom=0;indexChrom<POBLACION/2;indexChrom++){
-		//crossover
-		if(Math.floor((Math.random()*100)+1) < crossover){
-			cromosomasHijos = doCrossover(cromosomasPadres[indexChrom*2],cromosomasPadres[indexChrom*2+1]);
-		}
-		else{
-			cromosomasHijos = cromosomasPadres[indexChrom*2].concat(cromosomasPadres[indexChrom*2+1]);
-		}
-
-		//first child mutacion
-		if(Math.floor((Math.random()*100)+1) < mutacion){
-			cromosoma[indexChrom*2] = hacerMutacion(cromosomasHijos.slice(0,GENES));
-		}
-		else{
-			cromosoma[indexChrom*2] = cromosomasHijos.slice(0,GENES);				
-		}
-
-		//second child mutacion
-		if(Math.floor((Math.random()*100)+1) < mutacion){
-			cromosoma[indexChrom*2+1] = hacerMutacion(cromosomasHijos.slice(GENES,GENES*2));
-		}
-		else{
-			cromosoma[indexChrom*2+1] = cromosomasHijos.slice(GENES,GENES*2);				
-		}
-	}
-}
-
-//return a Array[GENES*2] with the children
+//devuelve un Array[GENES*2] con los dos hijos
 function doCrossover(primerPadre, segundoPadre){
 	primerHijo = new Array(GENES);
 	segundoHijo = new Array(GENES);
-	iCorte = 20;//Math.floor((Math.random()*(GENES)));
+	iCorte = Math.floor((Math.random()*GENES));
 	
 	for(index=0;index<iCorte;index++){
 		primerHijo[index] = primerPadre[index];
@@ -466,7 +433,7 @@ function doCrossover(primerPadre, segundoPadre){
 	return primerHijo.concat(segundoHijo);
 }
 
-//return a Array[GENES] with mutate children
+//devuelve un Array[GENES] con el hijo mutado
 function hacerMutacion(cromosomaHijo){
 	randomGEN = Math.floor((Math.random()*GENES));
 	

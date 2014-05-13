@@ -23,20 +23,40 @@
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
-<page aggregateWorkingSetId="Aggregate for window 1398366614561" focus="true" label="Workspace - Resource">
+<page aggregateWorkingSetId="Aggregate for window 1398366614561" focus="true" label="Workspace - Java">
 <editors>
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Principal.java" partName="Principal.java" path="/media/multimedia/Desarrollo/git/Facultad/java/Clase 5 (TryCatch)/src/manejoDeErrores/Principal.java" title="Principal.java" tooltip="Clase 5 (TryCatch)/src/manejoDeErrores/Principal.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Clase 5 (TryCatch)/src/manejoDeErrores/Principal.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="619" selectionTopPixel="153"/>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Owner.java" partName="Owner.java" path="/media/multimedia/Desarrollo/git/Facultad/java/Clase 4 (Herencia)/src/Owner.java" title="Owner.java" tooltip="Clase 4 (Herencia)/src/Owner.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Clase 4 (Herencia)/src/Owner.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="574" selectionTopPixel="62"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Laptop.java" partName="Laptop.java" path="/media/multimedia/Desarrollo/git/Facultad/java/Clase 4 (Herencia)/src/Laptop.java" title="Laptop.java" tooltip="Clase 4 (Herencia)/src/Laptop.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Clase 4 (Herencia)/src/Laptop.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="50" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Tablet.java" partName="Tablet.java" path="/media/multimedia/Desarrollo/git/Facultad/java/Clase 4 (Herencia)/src/Tablet.java" title="Tablet.java" tooltip="Clase 4 (Herencia)/src/Tablet.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Clase 4 (Herencia)/src/Tablet.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="54" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SmartPhone.java" partName="SmartPhone.java" path="/media/multimedia/Desarrollo/git/Facultad/java/Clase 4 (Herencia)/src/SmartPhone.java" title="SmartPhone.java" tooltip="Clase 4 (Herencia)/src/SmartPhone.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Clase 4 (Herencia)/src/SmartPhone.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="57" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Device.java" partName="Device.java" path="/media/multimedia/Desarrollo/git/Facultad/java/Clase 4 (Herencia)/src/Device.java" title="Device.java" tooltip="Clase 4 (Herencia)/src/Device.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Clase 4 (Herencia)/src/Device.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="22" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -46,7 +66,6 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Errors (1 item)"/>
 <category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="523" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
@@ -56,9 +75,6 @@
 <visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
-</view>
-<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
-<viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
 <viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="">
@@ -89,6 +105,9 @@
 </customFilters>
 </viewState>
 </view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
+</view>
 <view id="org.eclipse.ui.views.TaskList" partName="Tasks">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.completionField" categoryGroup="none" markerContentGenerator="org.eclipse.ui.ide.tasksGenerator" partName="Tasks">
 <columnWidths org.eclipse.ui.ide.completionField="40" org.eclipse.ui.ide.descriptionField="350" org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="421" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.priorityField="35" org.eclipse.ui.ide.resourceField="105"/>
@@ -107,7 +126,7 @@
 </view>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.ui.resourcePerspective">
+<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.ui.internal.ide.application.ResourcePerspective" id="org.eclipse.ui.resourcePerspective" label="Resource"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -143,45 +162,32 @@
 <view id="org.eclipse.ui.views.TaskList"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <fastViewBars/>
-<layout>
-<mainWindow>
-<info folder="true" part="topLeft">
-<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">
-<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="topLeft">&#x0A;<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
 <page content="org.eclipse.team.ccvs.ui.RepositoriesView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@2b62d9a6" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="topLeft">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@2b62d9a6" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="topLeft">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.11291513" ratioLeft="153" ratioRight="1202" relationship="2" relative="topLeft"/>
-<info folder="true" part="bottomRight" ratio="0.659375" ratioLeft="422" ratioRight="218" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
+<info folder="true" part="bottomRight" ratio="0.659375" ratioLeft="422" ratioRight="218" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.team.ui.GenericHistoryView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="bottomLeft" ratio="0.5" ratioLeft="320" ratioRight="320" relationship="4" relative="topLeft">
-<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<info folder="true" part="bottomLeft" ratio="0.5" ratioLeft="320" ratioRight="320" relationship="4" relative="topLeft">&#x0A;<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
@@ -266,7 +272,7 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.09298893" ratioLeft="126" ratioRight="1229" relationship="2" relative="left"/>
+<info part="org.eclipse.ui.editorss" ratio="0.11439114" ratioLeft="155" ratioRight="1200" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.7972973" ratioLeft="531" ratioRight="135" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
@@ -301,68 +307,74 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TryCatch/src/manejoDeErrores/Principal.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Clase 5 (TryCatch)/src/manejoDeErrores/Principal.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Clase 4 (Herencia)/src/Owner.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Clase 4 (Herencia)/src/IConPeso.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Clase 4 (Herencia)/src/Device.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Clase 4 (Herencia)/src/Laptop.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Clase 4 (Herencia)/src/Tablet.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Clase 4 (Herencia)/src/SmartPhone.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Clase 4 (Herencia)/src/Desktop.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Clase 4 (Herencia)/src/Device.java"/>
 </editors>
-<item historyLabel="Principal.java" index="0">
+<item historyLabel="Owner.java" index="0">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="0">
-<position info="not_deleted" x="137" y="0"/>
+<item historyLabel="IConPeso.java" index="1">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position info="not_deleted" x="274" y="0"/>
+<item historyLabel="IConPeso.java" index="1">
+<position info="not_deleted" x="53" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position info="not_deleted" x="219" y="0"/>
+<item historyLabel="Device.java" index="2">
+<position info="not_deleted" x="861" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position info="not_deleted" x="274" y="0"/>
+<item historyLabel="Owner.java" index="0">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position/>
+<item historyLabel="Laptop.java" index="3">
+<position info="not_deleted" x="50" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position/>
+<item historyLabel="Tablet.java" index="4">
+<position info="not_deleted" x="54" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position/>
+<item historyLabel="SmartPhone.java" index="5">
+<position info="not_deleted" x="57" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position/>
+<item historyLabel="Desktop.java" index="6">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position/>
+<item historyLabel="Device.java" index="7">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position info="not_deleted" x="673" y="0"/>
+<item historyLabel="Desktop.java" index="6">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position/>
+<item historyLabel="SmartPhone.java" index="5">
+<position info="not_deleted" x="57" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position/>
+<item historyLabel="Owner.java" index="0">
+<position info="not_deleted" x="521" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position info="not_deleted" x="954" y="0"/>
+<item historyLabel="Device.java" index="7">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position info="not_deleted" x="130" y="0"/>
+<item historyLabel="Device.java" index="7">
+<position info="not_deleted" x="22" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position info="not_deleted" x="98" y="0"/>
+<item historyLabel="Device.java" index="7">
+<position info="not_deleted" x="43" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position info="not_deleted" x="130" y="0"/>
+<item historyLabel="Laptop.java" index="3">
+<position info="not_deleted" x="50" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position info="not_deleted" x="928" y="0"/>
+<item historyLabel="Device.java" index="7">
+<position info="not_deleted" x="22" y="0"/>
 </item>
-<item historyLabel="Principal.java" index="1">
-<position info="not_deleted" x="896" y="0"/>
+<item historyLabel="Owner.java" index="0">
+<position info="not_deleted" x="521" y="0"/>
 </item>
-<item active="true" historyLabel="Principal.java" index="1">
-<position info="not_deleted" x="580" y="0"/>
+<item active="true" historyLabel="Owner.java" index="0">
+<position info="not_deleted" x="566" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -370,10 +382,6 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="topLeft"/>
-<trimItem IMemento.internal.id="bottomLeft"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -381,55 +389,54 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
-<trimItem IMemento.internal.id="bottomRight"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Principal.java" tooltip="TryCatch/src/manejoDeErrores/Principal.java">
-<persistable path="/TryCatch/src/manejoDeErrores/Principal.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Main.java" tooltip="Clase 4 (Herencia)/src/Main.java">
-<persistable path="/Clase 4 (Herencia)/src/Main.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Owner.java" tooltip="Clase 4 (Herencia)/src/Owner.java">
-<persistable path="/Clase 4 (Herencia)/src/Owner.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Laptop.java" tooltip="Clase 4 (Herencia)/src/Laptop.java">
-<persistable path="/Clase 4 (Herencia)/src/Laptop.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Device.java" tooltip="Clase 4 (Herencia)/src/Device.java">
+<persistable path="/Clase 4 (Herencia)/src/Device.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Desktop.java" tooltip="Clase 4 (Herencia)/src/Desktop.java">
 <persistable path="/Clase 4 (Herencia)/src/Desktop.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PC.java" tooltip="Clase 4 (Herencia)/src/PC.java">
-<persistable path="/Clase 4 (Herencia)/src/PC.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Device.java" tooltip="Clase 4 (Herencia)/src/Device.java">
-<persistable path="/Clase 4 (Herencia)/src/Device.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SmartPhone.java" tooltip="Clase 4 (Herencia)/src/SmartPhone.java">
+<persistable path="/Clase 4 (Herencia)/src/SmartPhone.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Tablet.java" tooltip="Clase 4 (Herencia)/src/Tablet.java">
 <persistable path="/Clase 4 (Herencia)/src/Tablet.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SmartPhone.java" tooltip="Clase 4 (Herencia)/src/SmartPhone.java">
-<persistable path="/Clase 4 (Herencia)/src/SmartPhone.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Laptop.java" tooltip="Clase 4 (Herencia)/src/Laptop.java">
+<persistable path="/Clase 4 (Herencia)/src/Laptop.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Display.java" tooltip="Clase 4 (Herencia)/src/Display.java">
-<persistable path="/Clase 4 (Herencia)/src/Display.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="IConPeso.java" tooltip="Clase 4 (Herencia)/src/IConPeso.java">
+<persistable path="/Clase 4 (Herencia)/src/IConPeso.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Phone.java" tooltip="Clase 4 (Herencia)/src/Phone.java">
-<persistable path="/Clase 4 (Herencia)/src/Phone.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Owner.java" tooltip="Clase 4 (Herencia)/src/Owner.java">
+<persistable path="/Clase 4 (Herencia)/src/Owner.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Main.java" tooltip="Clase 3 Ventas/src/Main.java">
-<persistable path="/Clase 3 Ventas/src/Main.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AnalisisFitness.java" tooltip="Geneticos/src/AnalisisFitness.java">
+<persistable path="/Geneticos/src/AnalisisFitness.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Articulo.java" tooltip="Clase 3 Ventas/src/Articulo.java">
-<persistable path="/Clase 3 Ventas/src/Articulo.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Gen.java" tooltip="Geneticos/src/Gen.java">
+<persistable path="/Geneticos/src/Gen.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DetalleVenta.java" tooltip="Clase 3 Ventas/src/DetalleVenta.java">
-<persistable path="/Clase 3 Ventas/src/DetalleVenta.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Controlador.java" tooltip="Geneticos/src/Controlador.java">
+<persistable path="/Geneticos/src/Controlador.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Cliente.java" tooltip="Clase 3 Ventas/src/Cliente.java">
-<persistable path="/Clase 3 Ventas/src/Cliente.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Controlador.java" tooltip="Geneticos2/src/Controlador.java">
+<persistable path="/Geneticos2/src/Controlador.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="OpGeneticos.java" tooltip="Geneticos2/src/OpGeneticos.java">
+<persistable path="/Geneticos2/src/OpGeneticos.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="Gen.java" tooltip="Geneticos2/src/Gen.java">
+<persistable path="/Geneticos2/src/Gen.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Cromosoma.java" tooltip="Geneticos/src/Cromosoma.java">
+<persistable path="/Geneticos/src/Cromosoma.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Cromosoma.java" tooltip="Geneticos2/src/Cromosoma.java">
+<persistable path="/Geneticos2/src/Cromosoma.java"/>
 </file>
 </mruList>
 </workbench>

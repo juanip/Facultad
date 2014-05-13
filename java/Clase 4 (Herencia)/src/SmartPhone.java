@@ -1,4 +1,4 @@
-public class SmartPhone extends Phone{
+public class SmartPhone extends Phone implements IConPeso{
 	private double weight;
 	private String tactilTechnology;
 	private String maxResolution;

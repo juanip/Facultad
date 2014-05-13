@@ -1,4 +1,4 @@
-public class Tablet extends Device{
+public class Tablet extends Device implements IConPeso{
 	private double weight;
 	private String tactilTechnology;
 	private String maxResolution;

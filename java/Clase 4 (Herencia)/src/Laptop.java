@@ -1,4 +1,4 @@
-public class Laptop extends PC{
+public class Laptop extends PC implements IConPeso{
 	private double weight;
 	private String ensurenceCompany;
 	private int ensurenceContract;

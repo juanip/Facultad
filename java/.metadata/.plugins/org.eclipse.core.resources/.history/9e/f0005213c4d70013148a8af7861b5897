@@ -1,0 +1,6 @@
+
+public interface IConPeso {
+	public double weight;
+	public double getWeight();
+	
+}

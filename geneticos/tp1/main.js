@@ -18,8 +18,8 @@ var ruleta;
 
 // mejorCromosoma: [0]>>generacion [1]>>fObjetivo [2]>>fFitness [3]>>dec [4]>>bin
 var mejorCromosoma = new Array(5);
-//igual que mejorCromosoma, excepto [4] >> promedio fObjetive¿o en la generacion
-var mejorCromosomaActual = new Array(5);
+//igual que mejorCromosoma, excepto [4] >> promedio fObjetive¿o en la generacion [5]>>bin
+var mejorCromosomaActual = new Array(6);
 
 // data[x][y]: [x]>>generacion [y]: [0]>>max fObjetivo [1]>>min fObjetivo [2]>>primedio fObjetivo
 var data;
@@ -104,6 +104,7 @@ function btnStop(){
 	document.getElementById("text-best-generation").innerHTML = "Generaci&oacute;n: -";
 	document.getElementById("text-best-objetive").innerHTML = "Promedio F. Objetivo: -";
 	document.getElementById("text-best-decimal").innerHTML = "Valor: -";
+	document.getElementById("text-best-cromosoma").innerHTML = "Cromosoma: -";
 	document.getElementById("data").style.display = "none";
 
 
@@ -179,7 +180,7 @@ function analizarGeneracionActual(){
 	}
 
 	//best cromosoma of the generation
-	for(i=0;i<4;i++){
+	for(i=0;i<5;i++){
 		mejorCromosomaActual[i] = 0;
 	}
 
@@ -189,6 +190,7 @@ function analizarGeneracionActual(){
 			mejorCromosomaActual[1] = fObjetivoActual[index];
 			mejorCromosomaActual[2] = fFitnessActual[index];
 			mejorCromosomaActual[3] = binToDec(cromosoma[index]);
+			mejorCromosomaActual[5] = cromosoma[index]; 
 		}
 	}
 	mejorCromosomaActual[4] = fObjetivoSuma / POBLACION;
@@ -199,6 +201,7 @@ function analizarGeneracionActual(){
 		mejorCromosoma[1] = mejorCromosomaActual[1];
 		mejorCromosoma[2] = mejorCromosomaActual[2];
 		mejorCromosoma[3] = mejorCromosomaActual[3];
+		mejorCromosoma[4] = mejorCromosomaActual[5];
 	}
 }
 
@@ -235,7 +238,8 @@ function actualizarInfoMejorCromosomaActual(){
 function ActualizarInfoMejorCromosoma(){
 	document.getElementById("text-best-generation").innerHTML = "Generaci&oacute;n: " + (mejorCromosoma[0] + 1);
 	document.getElementById("text-best-objetive").innerHTML = "F. Objetivo: " + mejorCromosoma[1].toFixed(9);
-	document.getElementById("text-best-decimal").innerHTML = "Valor: " + mejorCromosoma[3];	
+	document.getElementById("text-best-decimal").innerHTML = "Valor: " + mejorCromosoma[3];
+	document.getElementById("text-best-cromosoma").innerHTML = mejorCromosoma[4].join("");
 }
 
 function limpiarTablaGeneracionActual(){

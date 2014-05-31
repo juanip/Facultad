@@ -7,11 +7,6 @@ public class Operaciones {
 	private void setNumeros(String a, String b) throws NumberFormatException {
 		try {
 			this.num1 = Double.parseDouble(a);
-		} catch (NumberFormatException e) {
-			throw e;
-		}
-		
-		try {
 			this.num2 = Double.parseDouble(b);
 		} catch (NumberFormatException e) {
 			throw e;

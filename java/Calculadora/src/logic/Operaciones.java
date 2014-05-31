@@ -18,7 +18,7 @@ public class Operaciones {
 		}
 	}
 	
-	public String sumar(String a, String b) throws NumberFormatException{
+	public String sumar(String a, String b) throws NumberFormatException {
 		try {
 			this.setNumeros(a,b);
 		}
@@ -30,7 +30,7 @@ public class Operaciones {
 		return num3.toString();
 	}
 	
-	public String restar(String a, String b) {
+	public String restar(String a, String b) throws NumberFormatException {
 		try {
 			this.setNumeros(a,b);
 		}
@@ -42,7 +42,7 @@ public class Operaciones {
 		return num3.toString();
 	}
 	
-	public String multiplicar(String a, String b) {
+	public String multiplicar(String a, String b) throws NumberFormatException {
 		try {
 			this.setNumeros(a,b);
 		}
@@ -54,7 +54,7 @@ public class Operaciones {
 		return num3.toString();
 	}
 	
-	public String dividir(String a, String b) throws DivideByZeroException {
+	public String dividir(String a, String b) throws DivideByZeroException, NumberFormatException {
 		try {
 			this.setNumeros(a,b);
 		}

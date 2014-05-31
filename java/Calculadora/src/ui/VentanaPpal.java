@@ -148,7 +148,7 @@ public class VentanaPpal extends JFrame {
 			this.lblOutput.setText(output);
 		}
 		catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "Solo se pueden restar números!", "Error de formato", JOptionPane.QUESTION_MESSAGE );
+			JOptionPane.showMessageDialog(null, "Solo se pueden dividir números!", "Error de formato", JOptionPane.QUESTION_MESSAGE );
 		}	
 		catch (DivideByZeroException e) {
 			JOptionPane.showMessageDialog(null, "No se puede dividir por cero!", "Operación no definida", JOptionPane.QUESTION_MESSAGE );

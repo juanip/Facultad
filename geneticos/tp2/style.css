@@ -1,0 +1,72 @@
+body {
+	background-color: #c1b8ef;
+}
+
+.contenedor {
+	text-align: center;
+	width: 100%;
+}
+
+.ayudat {
+	display: none;
+	background: #7d8896;
+	border: 1px dashed black;
+	font-size: medium;
+	width: 25%;
+	margin: 0 auto;
+	text-align: left;
+	padding: 5px;
+	font-weight: normal;
+}
+
+.ayuda {
+	vertical-align: super;
+	font-size: small;
+	text-decoration: underline;
+}
+
+.ayuda:hover + div {
+	display: block;
+}
+
+section {
+	width: 49%;
+	text-align: left;
+}
+h2 {		
+	text-align: center;
+}
+.presentacion {
+	margin: 25px auto;
+	width: 80%;
+	display: none;
+}
+.exhaustiva {
+	float: left;
+	background-color: #7d8896;
+	border: 3px dashed black;
+}
+.heuristica {
+	float: right;
+	background-color: #7d8896;
+	border: 3px dashed black;
+}
+.control {
+	font-weight: bold;
+	width: 80%;
+	padding: 10px;
+	background-color: #c1b8ef;
+	text-align: center;
+	border: 2px solid black;
+	color: black;
+	text-decoration: none;
+	margin: 25px auto;
+	display: block;
+}
+
+.mensaje {
+	margin: 25px auto;
+	width: 80%;
+	text-align: center;
+	display: none;
+}

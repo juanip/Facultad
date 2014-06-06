@@ -1,7 +1,7 @@
 
 public class Main {
 	public static void main(String[] args) {
-		//Deposito:
+		//Deposito: lalala
 		Articulo plancha = new Articulo(1,"Plancha para ropa arrugada",10,57.99); //id, descr, cant, precio
 		Articulo arvejas = new Articulo(2,"Arvejas azules",80,9.99);
 		Articulo mochila = new Articulo(3,"Mochila \"El Alumno Feliz\"",12,118.85);

@@ -5,6 +5,8 @@ public class Articulo {
 	private int stock;
 	private double precio;
 	
+	//lalalala
+	
 	public Articulo(int id, String descripcion, int stock, double precio){
 		setId(id);
 		setDescription(descripcion);

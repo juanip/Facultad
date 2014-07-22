@@ -1,5 +1,5 @@
 body {
-	background-color: #c1b8ef;
+	background-color: #ffffff;
 }
 
 .contenedor {
@@ -7,9 +7,14 @@ body {
 	width: 100%;
 }
 
+.nav {
+	float: left;
+	color: #000000;
+}
+
 .ayudat {
 	display: none;
-	background: #7d8896;
+	background: #c1b8ef;
 	border: 1px dashed black;
 	font-size: medium;
 	width: 25%;
@@ -36,6 +41,11 @@ section {
 h2 {		
 	text-align: center;
 }
+
+h3 a {
+	color: #000000;
+	text-decoration: none;
+}
 .presentacion {
 	margin: 25px auto;
 	width: 80%;
@@ -43,19 +53,19 @@ h2 {
 }
 .exhaustiva {
 	float: left;
-	background-color: #7d8896;
+	background-color: #c1b8ef;
 	border: 3px dashed black;
 }
 .heuristica {
 	float: right;
-	background-color: #7d8896;
+	background-color: #c1b8ef;
 	border: 3px dashed black;
 }
 .control {
 	font-weight: bold;
 	width: 80%;
 	padding: 10px;
-	background-color: #c1b8ef;
+	background-color: #ffffff;
 	text-align: center;
 	border: 2px solid black;
 	color: black;

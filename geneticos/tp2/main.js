@@ -1,17 +1,24 @@
 var elementos;
 var mochilaMax;
 
-function iniciar() {
+//VOLUMEN
+
+function iniciarVolumen() {
 	elementos = [[150,20],[325,40],[600,50],[805,36],[430,25],[1200,64],[770,54],[60,18],[930,46],[353,28]];
 	mochilaMax = 4200;
 }
 
-function exhaustiva() {
+function exhaustiva(tipo) {
 	document.getElementById('mensaje').style.display = 'block';
-	setTimeout(function(){doExhaustiva()},0);	
+	if(tipo==='volumen') {
+		setTimeout(function(){doExhaustivaVolumen()},0);	
+	}
+	else if(tipo==='peso') {
+		setTimeout(function(){doExhaustivaPeso()},0);
+	}
 }
 
-function doExhaustiva() {
+function doExhaustivaVolumen() {
 	var inicio = new Date();
 	
 	var mochilaItems = new Array();
@@ -91,24 +98,117 @@ function doExhaustiva() {
 	console.log("Volumen");
 	console.log(mochilaVolumen[auxIndice]);
 
-	document.getElementById('exhaustiva-elementos').innerHTML = mochilaItems[auxIndice]; 
+	console.log(mochilaItems.length)
+
+	mochila = mochilaItems[auxIndice].split(' ');
+	i=0;
+	while(mochila[i]!=""){
+		mochila[i] = parseInt(mochila[i]);
+		i++;
+	}
+	i=0;
+		while(mochila[i]!==""){
+			elemento = (i===0) ? '' : '; ';
+			elemento += mochila[i] + ' (' + elementos[mochila[i]][0] + ', ' + elementos[mochila[i]][1] + ')'; 
+			document.getElementById('exhaustiva-elementos').innerHTML += elemento;
+			i++;
+	}
+
 	document.getElementById('exhaustiva-valor').innerHTML = mochilaValor[auxIndice];
-	document.getElementById('exhaustiva-volumen').innerHTML = mochilaVolumen[auxIndice];
+	document.getElementById('exhaustiva').innerHTML = mochilaVolumen[auxIndice];
+}
+
+
+function doExhaustivaPeso() {
+	var inicio = new Date();
+	
+	var mochilaItems = new Array();
+	var mochilaVolumen = new Array();
+	var mochilaValor = new Array();
+	var valores = new Array(3);
+	
+	aux = 0;
+	for(i=0;i<3;i++){
+		valores[0] = i;
+		for(j=0;j<3;j++){
+			if(j==i) continue;
+			valores[1] = j;
+			for(k=0;k<3;k++){
+				if(j==k|i==k) continue;
+				valores[2] = k;
+				mochilaVolumen[aux] = 0;
+				cont = 0;
+				mochilaValor[aux] = 0;
+				mochilaItems[aux] = "";
+				while((mochilaVolumen[aux]+elementos[valores[cont]][0]) <= mochilaMax){
+					mochilaValor[aux] += elementos[valores[cont]][1];
+					mochilaVolumen[aux] += elementos[valores[cont]][0];
+					mochilaItems[aux] += (valores[cont]+' ');
+					cont++;
+				}
+				aux++;
+			}
+		}
+	}
+
+	aux = 0;
+	auxIndice = 0;
+	for(i=0;i<mochilaValor.length;i++){
+		if(aux < mochilaValor[i]){
+			aux = mochilaValor[i];
+			auxIndice = i;
+		}
+	}
+	document.getElementById('mensaje').style.display = 'none';
+	document.getElementById('pexhaustiva').style.display = 'block';
+
+	console.log("Tiempo:");
+	console.log(((new Date())-inicio)/1000);
+	console.log("Mochila");
+	console.log(mochilaItems[auxIndice]);
+	console.log("Valor");
+	console.log(mochilaValor[auxIndice]);
+	console.log("Peso");
+	console.log(mochilaVolumen[auxIndice]);
+
+	console.log(mochilaItems.length)
+
+	mochila = mochilaItems[auxIndice].split(' ');
+	i=0;
+	while(mochila[i]!=""){
+		mochila[i] = parseInt(mochila[i]);
+		i++;
+	}
+	i=0;
+		while(mochila[i]!==""){
+			elemento = (i===0) ? '' : '; ';
+			elemento += mochila[i] + ' (' + elementos[mochila[i]][0] + ', ' + elementos[mochila[i]][1] + ')'; 
+			document.getElementById('exhaustiva-elementos').innerHTML += elemento;
+			i++;
+		}
+
+	document.getElementById('exhaustiva-valor').innerHTML = mochilaValor[auxIndice];
+	document.getElementById('exhaustiva').innerHTML = mochilaVolumen[auxIndice];
+}
+
+function iniciarPeso() {
+	elementos = [[1800,72],[600,36],[1200,60]];
+	mochilaMax = 3000;
 }
 
 function heuristica() {
 	var inicio = new Date();
-	var elementosHeuristica = new Array(10);
-	var elementosHeuristicaPosiciones = new Array(10);
+	var elementosHeuristica = new Array(elementos.length);
+	var elementosHeuristicaPosiciones = new Array(elementos.length);
 
-	for(i=0;i<10;i++){
+	for(i=0;i<elementos.length;i++){
 		elementosHeuristica[i] = elementos[i][0] / elementos[i][1];
 		elementosHeuristicaPosiciones[i] = i;
 	}
 
 	aux = 0;
-	for(i=1;i<10;i++) {
-		for(j=0;j<9;j++) {
+	for(i=1;i<elementos.length;i++) {
+		for(j=0;j<(elementos.length-1);j++) {
 			if(elementosHeuristica[i]>elementosHeuristica[j]) {
 				aux = elementosHeuristica[j];
 				elementosHeuristica[j] = elementosHeuristica[i];
@@ -142,7 +242,14 @@ function heuristica() {
 
 	document.getElementById('pheuristica').style.display = 'block';
 
-	document.getElementById('heuristica-elementos').innerHTML = mochila.join(" "); 
+	i=0;
+	while(mochila[i]!=undefined){
+		elemento = (i===0) ? '' : '; ';
+		elemento += mochila[i] + ' (' + elementos[mochila[i]][0] + ', ' + elementos[mochila[i]][1] + ')'; 
+		document.getElementById('heuristica-elementos').innerHTML += elemento;
+		i++;
+	}
+
 	document.getElementById('heuristica-valor').innerHTML = valor;
-	document.getElementById('heuristica-volumen').innerHTML = volumen;
+	document.getElementById('heuristica').innerHTML = volumen;
 }

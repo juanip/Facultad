@@ -5,43 +5,11 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src="main.js"></script>
 </head>
-<body onload="iniciar()">
-	<div class="contenedor">
-		<h1>
-			Problema de la mochila<span class="ayuda">(?)</span>
-			<div class="ayudat">
-				<p>Objetivo: meter en la mochila la combinaci&oacute;n de elementos de mayor valor, teniendo
-				en cuenta que la capacidad m&aacute;xima de la mochila es de 4200 cm<sup>3</sup></p>
-			</div>
-		</h1>
-		
-		<section class="exhaustiva">
-			<h2>B&uacute;squeda Exhaustiva</h2>
-			<a href="#" class="control" onclick="exhaustiva()">Iniciar</a>
-
-			<div class="mensaje" id="mensaje">
-				<p>Procesando...</p>
-			</div>
-
-			<div class="presentacion" id="pexhaustiva">
-				<p>Elementos: <span id="exhaustiva-elementos"></span></p>
-				<p>Volumen: <span id="exhaustiva-volumen"></span> cm<sup>3</sup></p>
-				<p>Valor: $<span id="exhaustiva-valor"></span></p>
-			</div>
-		</section>
-
-		<section class="heuristica">
-			<h2>B&uacute;squeda Heur&iacute;stica</h2>
-			
-			<a href="#" class="control" onclick="heuristica()">Iniciar</a>
-
-			<div class="presentacion" id="pheuristica">
-				<p>Elementos: <span id="heuristica-elementos"></span></p>
-				<p>Volumen: <span id="heuristica-volumen"></span> cm<sup>3</sup></p>
-				<p>Valor: $<span id="heuristica-valor"></span></p>
-			</div>
-		</section>
-	</div>
-
+<body>
+	<h1>Problema de la mochila</h1>
+	<ul>
+		<li><h3><a href="volumen.html">Volumen</a></h3></li>
+		<li><h3><a href="peso.html">Peso</a></h3></li>
+	</ul>
 </body>
 </html>

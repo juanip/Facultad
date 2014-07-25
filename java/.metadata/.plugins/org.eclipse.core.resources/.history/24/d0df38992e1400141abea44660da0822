@@ -1,0 +1,5 @@
+package datitos;
+
+public class Television extends Electrodomestico {
+
+}

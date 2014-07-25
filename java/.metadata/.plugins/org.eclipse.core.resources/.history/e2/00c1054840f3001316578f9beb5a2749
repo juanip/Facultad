@@ -1,0 +1,11 @@
+package logic;
+
+public class Venta {
+
+	public static double precioEntrada = 47;
+	
+	public static void getPrecioEntrada() {
+		
+	}
+
+}

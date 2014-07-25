@@ -1,0 +1,18 @@
+package logic;
+
+import java.util.Date;
+
+public class Venta {
+
+	public static double precioEntrada = 47;
+	
+	private String pelicula;
+	private Date horario;
+	
+	
+	
+	public static void getPrecioEntrada() {
+		
+	}
+
+}

@@ -1,0 +1,17 @@
+package logic;
+
+public class Venta {
+
+	public static double precioEntrada = 47;
+	
+	private String pelicula;
+	private String horario;
+	private int cantEntradas;
+	private double importeTotal;
+	
+	
+	public static void getPrecioEntrada() {
+		
+	}
+
+}

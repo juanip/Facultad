@@ -50,9 +50,11 @@ function btnNext(){
 		limpiarTablaGeneracionActual();
 		crearNuevaGeneracion();
 		analizarGeneracionActual();
-		if((cicloActual % Math.floor(ciclos/20)) == 0) {
+		//Descomentar para solo mostrar 20 generaciones 
+		//Tambien descomentar mas abajo
+		//if((cicloActual % Math.floor(ciclos/20)) == 0) {
 			llenarTablaDatos(cicloActual, mejorCromosomaActual[1], minFObjetivo, fObjetivoSuma/POBLACION);
-		}
+		//}
 		llenarTablaGeneracioActual();
 		actualizarInfoMejorCromosomaActual();
 		ActualizarInfoMejorCromosoma();
@@ -74,9 +76,11 @@ function btnFinish(){
 	for(;cicloActual<ciclos;cicloActual++){
 		crearNuevaGeneracion();
 		analizarGeneracionActual();
-		if(((cicloActual+1) % Math.floor(ciclos/20)) == 0) {
+		//Descomentar para solo mostrar 20 generaciones 
+		//Tambien descomentar mas arriba
+		//if(((cicloActual+1) % Math.floor(ciclos/20)) == 0) {
 			llenarTablaDatos(cicloActual, mejorCromosomaActual[1], minFObjetivo, fObjetivoSuma/POBLACION);
-		}
+		//}
 	}
 	limpiarTablaGeneracionActual();
 	llenarTablaGeneracioActual();
@@ -179,7 +183,7 @@ function analizarGeneracionActual(){
 		fFitnessActual[i] = fObjetivoActual[i] / fObjetivoSuma;
 	}
 
-	//best cromosoma of the generation
+	//mejor cromosoma de la generacion
 	for(i=0;i<5;i++){
 		mejorCromosomaActual[i] = 0;
 	}
@@ -195,7 +199,7 @@ function analizarGeneracionActual(){
 	}
 	mejorCromosomaActual[4] = fObjetivoSuma / POBLACION;
 
-	//is this best Cromosoma the best Cromosoma of all time?
+	//guarda mejor cromosoma de todas las generaciones
 	if(mejorCromosomaActual[1] > mejorCromosoma[1]){
 		mejorCromosoma[0] = mejorCromosomaActual[0];
 		mejorCromosoma[1] = mejorCromosomaActual[1];
@@ -301,7 +305,7 @@ function nacimientos(cromosomasPadres) {
 			cromosomasHijos = cromosomasPadres[indexChrom*2].concat(cromosomasPadres[indexChrom*2+1]);
 		}
 
-		//first child mutacion
+		//mutacion primer hijo
 		if(Math.floor(Math.random()*100) < mutacion) {
 			cromosoma[indexChrom*2] = hacerMutacion(cromosomasHijos.slice(0,GENES));
 		}
@@ -309,7 +313,7 @@ function nacimientos(cromosomasPadres) {
 			cromosoma[indexChrom*2] = cromosomasHijos.slice(0,GENES);				
 		}
 
-		//second child mutacion
+		//mutacion segundo hijo
 		if(Math.floor(Math.random()*100) < mutacion) {
 			cromosoma[indexChrom*2+1] = hacerMutacion(cromosomasHijos.slice(GENES,GENES*2));
 		}

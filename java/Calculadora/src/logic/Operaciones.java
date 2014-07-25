@@ -4,6 +4,10 @@ public class Operaciones {
 	private double num1;
 	private double num2;
 	
+	private String limpiarNumero(Double num) {
+		return num.toString().endsWith(".0") ? num.toString().replace(".0", "") : num.toString(); 
+	}
+	
 	private void setNumeros(String a, String b) throws NumberFormatException {
 		try {
 			this.num1 = Double.parseDouble(a);
@@ -22,7 +26,8 @@ public class Operaciones {
 		}
 		
 		Double num3 = this.num1 + this.num2;
-		return num3.toString();
+		
+		return this.limpiarNumero(num3);
 	}
 	
 	public String restar(String a, String b) throws NumberFormatException {
@@ -34,7 +39,7 @@ public class Operaciones {
 		}
 		
 		Double num3 = this.num1 - this.num2;
-		return num3.toString();
+		return this.limpiarNumero(num3);
 	}
 	
 	public String multiplicar(String a, String b) throws NumberFormatException {
@@ -46,7 +51,7 @@ public class Operaciones {
 		}
 		
 		Double num3 = this.num1 * this.num2;
-		return num3.toString();
+		return this.limpiarNumero(num3);
 	}
 	
 	public String dividir(String a, String b) throws DivideByZeroException, NumberFormatException {
@@ -62,6 +67,6 @@ public class Operaciones {
 		}
 		
 		Double num3 = this.num1 / this.num2;	
-		return num3.toString();
+		return this.limpiarNumero(num3);
 	}
 }

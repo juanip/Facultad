@@ -1,0 +1,14 @@
+package datitos;
+
+public class Lavarropas extends Electrodomestico {
+
+	public static double CARGADEFAULT = 5;
+	
+	private double carga;
+	
+	Lavarropas() { 
+		super();
+	}
+	
+	
+}

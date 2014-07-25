@@ -1,82 +1,82 @@
 body {
-	background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 .contenedor {
-	text-align: center;
-	width: 100%;
+  text-align: center;
+  width: 100%;
 }
 
 .nav {
-	float: left;
-	color: #000000;
+  float: left;
+  color: #000000;
 }
 
 .ayudat {
-	display: none;
-	background: #c1b8ef;
-	border: 1px dashed black;
-	font-size: medium;
-	width: 25%;
-	margin: 0 auto;
-	text-align: left;
-	padding: 5px;
-	font-weight: normal;
+  display: none;
+  background: #c1b8ef;
+  border: 1px dashed black;
+  font-size: medium;
+  width: 25%;
+  margin: 0 auto;
+  text-align: left;
+  padding: 5px;
+  font-weight: normal;
 }
 
 .ayuda {
-	vertical-align: super;
-	font-size: small;
-	text-decoration: underline;
+  vertical-align: super;
+  font-size: small;
+  text-decoration: underline;
 }
 
 .ayuda:hover + div {
-	display: block;
+  display: block;
 }
 
 section {
-	width: 49%;
-	text-align: left;
+  width: 49%;
+  text-align: left;
 }
-h2 {		
-	text-align: center;
+h2 {    
+  text-align: center;
 }
 
 h3 a {
-	color: #000000;
-	text-decoration: none;
+  color: #000000;
+  text-decoration: none;
 }
 .presentacion {
-	margin: 25px auto;
-	width: 80%;
-	display: none;
+  margin: 25px auto;
+  width: 80%;
+  display: none;
 }
 .exhaustiva {
-	float: left;
-	background-color: #c1b8ef;
-	border: 3px dashed black;
+  float: left;
+  background-color: #c1b8ef;
+  border: 3px dashed black;
 }
 .heuristica {
-	float: right;
-	background-color: #c1b8ef;
-	border: 3px dashed black;
+  float: right;
+  background-color: #c1b8ef;
+  border: 3px dashed black;
 }
 .control {
-	font-weight: bold;
-	width: 80%;
-	padding: 10px;
-	background-color: #ffffff;
-	text-align: center;
-	border: 2px solid black;
-	color: black;
-	text-decoration: none;
-	margin: 25px auto;
-	display: block;
+  font-weight: bold;
+  width: 80%;
+  padding: 10px;
+  background-color: #ffffff;
+  text-align: center;
+  border: 2px solid black;
+  color: black;
+  text-decoration: none;
+  margin: 25px auto;
+  display: block;
 }
 
 .mensaje {
-	margin: 25px auto;
-	width: 80%;
-	text-align: center;
-	display: none;
+  margin: 25px auto;
+  width: 80%;
+  text-align: center;
+  display: none;
 }

@@ -1,0 +1,11 @@
+package datitos;
+
+public class Television extends Electrodomestico {
+	
+	public static double RESOLUCIONDEFAULT = 20;
+	public static boolean TDTDEFAULT = false;
+	
+	
+	
+
+}

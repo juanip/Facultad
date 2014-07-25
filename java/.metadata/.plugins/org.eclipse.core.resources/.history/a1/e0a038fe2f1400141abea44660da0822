@@ -1,0 +1,56 @@
+package datitos;
+
+public class Television extends Electrodomestico {
+	
+	public static double RESOLUCIONDEFAULT = 20;
+	public static boolean TDTDEFAULT = false;
+	
+	private double resolucion;
+	private boolean tdt;
+	
+	Television() {
+		super();
+		this.setResolucion(RESOLUCIONDEFAULT);
+		this.setTdt(TDTDEFAULT);
+	}
+	
+	Television(double precio, double peso) {
+		super(precio, peso);
+		this.setResolucion(RESOLUCIONDEFAULT);
+		this.setTdt(TDTDEFAULT);
+	}
+	
+	Television(double precio, double peso, String color, char consumo, double resolucion, boolean tdt) {
+		super(precio, peso, color, consumo);
+		this.setResolucion(resolucion);
+		this.setTdt(tdt);
+	}
+	
+	public double precioFinal() {
+		double precioParcial = super.precioFinal();
+		
+		if(getResolucion() > 40) {
+			
+		}
+	}
+	
+	public double getResolucion() {
+		return resolucion;
+	}
+	
+	public void setResolucion(double resolucion) {
+		this.resolucion = resolucion;
+	}
+	
+	public boolean isTdt() {
+		return tdt;
+	}
+	
+	public void setTdt(boolean tdt) {
+		this.tdt = tdt;
+	}
+	
+	
+	
+
+}

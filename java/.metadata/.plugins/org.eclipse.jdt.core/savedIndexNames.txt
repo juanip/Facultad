@@ -7,7 +7,6 @@ INDEX VERSION 1.126+/media/multimedia/Desarrollo/git/Facultad/java/.metadata/.pl
 3900037835.index
 1513993030.index
 3938652823.index
-1824608726.index
 2045514091.index
 989528713.index
 2307328643.index

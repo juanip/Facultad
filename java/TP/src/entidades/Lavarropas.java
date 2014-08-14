@@ -1,4 +1,4 @@
-package datitos;
+package entidades;
 
 public class Lavarropas extends Electrodomestico {
 

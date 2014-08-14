@@ -1,4 +1,4 @@
-package datitos;
+package entidades;
 
 public class Electrodomestico {
 	
@@ -11,6 +11,8 @@ public class Electrodomestico {
 	private double peso;
 	private Color color;
 	private ConsumoEnergetico consumo;
+	private String descripcion;
+	
 	
 	Electrodomestico() {
 		this.setPrecioBase(PRECIODEFAULT);
@@ -112,6 +114,13 @@ public class Electrodomestico {
 		this.consumo = consumo;
 	}
 	
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 	
 	
 }

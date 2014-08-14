@@ -59,7 +59,4 @@ public class Television extends Electrodomestico {
 		this.tdt = tdt;
 	}
 	
-	
-	
-
 }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Problema del viajante - Heurística</title>
+	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="uiHeuristica.js"></script>
+	<script type="text/javascript" src="mapa.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body onload="crearCheckbox();dibujarMapa()">
+	<div class="seccion primera">
+		<form class="seleccionCiudades">
+			<h2>Ciudades a recorrer:</h2>
+			<div class="ciudades">
+				<div id="checkboxCiudades1" class="checkboxCiudades1"></div>
+				<div id="checkboxCiudades2" class="checkboxCiudades2"></div>
+			</div>
+			<input class="btn" type="button" onclick="seleccionarCheckbox(true);actualizarSelect()" value="Todas" />
+			<input class="btn" type="button" onclick="seleccionarCheckbox(false);actualizarSelect()" value="Ninguna" />
+		</form>
+	</div>
+		
+	<div class="seccion segunda">
+		<form class="seleccionCiudadPartida">
+			<h2>Ciudad de partida:</h2>
+			<select id="ciudadPartida" class="ciudadPartida btn" onChange="actualizarMensaje()">
+			</select>
+		</form>
+	
+		<div id="mensajes" class="mensajes">
+			<h2>Itinerario de Viaje</h2>
+			<p>Partiendo desde <span id="ciudadInicio"></span>, visitando</p>
+			<ol id="listaCiudades" class="doble"></ol>
+			<p>y volviendo nuevamente a <span id="ciudadFin"></span>, se recorren <span id="kmTotal"></span> km.</p>
+			<p>Lo ideal es partir desde <span id="ciudadOptima"></span>, ya que solo hay que recorrer <span id="kmOptimo"></span> km.</p>
+		</div>
+	</div>
+
+	<div class="mapa seccion tercera">
+		<canvas id="canvas" width="1100" height="1550"></canvas>
+	</div>
+</body>
+</html>

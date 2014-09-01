@@ -1,0 +1,53 @@
+.seccion {
+	margin: 30px;
+	float: left;	
+}
+
+.seleccionCiudades {
+	width: 500px;
+}
+
+.btn {
+	margin: 10px 20px 0 0;
+	min-width: 100px;
+	height: 30px;
+	font-size: 1em; 
+}
+
+.seleccionCiudadPartida {
+}
+
+.ciudadPartida {
+
+}
+
+.ciudades {
+	margin: 25px 0 30px 20px;
+}
+.checkboxCiudades1 {
+	float: left;
+}
+
+label {
+	margin-right: 25px;
+	display: block;
+}
+
+.mensajes {
+	margin: 30px 0;
+	display: none;
+}
+
+.mensajes ol{
+  width:500px;
+  margin-bottom:20px;
+  overflow:hidden;
+}
+
+.mensajes li{
+  line-height:1.5em;
+  float:left;
+  display:inline;
+}
+
+.doble li  { width:50%;} 

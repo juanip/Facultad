@@ -111,6 +111,10 @@ function actualizarMensaje() {
 		kmTotal = document.getElementById("kmTotal");
 		kmTotal.innerHTML = calcularKilometros(recorrido.slice(0));
 
+		salida = new Array(2);
+		salida[0] = ciudades[ciudadPartidaIndex];
+		salida[1] = calcularKilometros(recorrido.slice(0));
+		console.log(salida);
 
 		//Buscar mejor
 		mejorCiudadInicioIndex = mejorCiudadInicio(ciudadesARecorrer.slice(0));

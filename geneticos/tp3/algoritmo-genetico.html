@@ -1,10 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Algoritmo Genético</title>
+	<title>Algor&iacute;tmos Gen&eacute;ticos</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="mapa.js"></script>
 	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="main-genetico.js"></script>
 </head>
 <body>
+	<div class="controls">
+		<a onclick="toggleView()" class="toggle">+</a>
+		
+		<div class="parameters" id="parameters">
+			<h2>Configuraci&oacute;n Inicial</h2>
+			<label>Crossover: <input type="number" id="crossover" value="82" min="0" max="100"></label>
+			<label>Mutaci&oacute;n: <input type="number" id="mutacion" value="7" min="0" max="100"></label>
+			<label>Ciclos: <input type="number" id="ciclos" value="200" min="20"></label>
+			<label id="label-elitismo">Elitismo: <input type="checkbox" for="label-elitismo" id="elitismo"></label>
+		</div>
 
+		<div class="buttons" id="buttons">
+			<h2>Controles</h2>
+			<div class="button-group">
+				<button id="play" onclick="btnPlay()">Iniciar</button>
+				<button id="stop" onclick="btnStop()" disabled>Terminar</button>
+			</div>
+			<div class="button-group">
+				<button id="next" onclick="btnNext()" disabled>Pr&oacute;x Gen.</button>
+				<button id="finish" onclick="btnFinish()" disabled>&Uacute;ltima Gen.</button>
+			</div>
+			<div class="button-group doble">
+				<button id="nextBest" onclick="btnNextBest()" disabled>Pr&oacute;x Mejor</button>
+			</div>
+		</div>
+
+		<div class="info" id="info">
+			<h2>Generaci&oacute;n Actual</h2>
+			<p id="text-current-generation">Generaci&oacute;n: -</p>
+			<p id="text-current-average">Promedio F. Objetivo: -</p>
+			<p id="text-current-max">Valor: -</p>
+		</div>
+
+		<div class="best-info" id="best-info">
+			<h2>Mejor Cromosoma</h2>
+			<p id="text-best-generation">Generaci&oacute;n: -</p>
+			<p id="text-best-objetive">F. Objetivo: -</p>
+			<p id="text-best-decimal">Valor: -</p>
+			<p id="text-best-cromosoma">Cromosoma: -</p>
+		</div>
+
+		<div class="current-generation" id="current-generation">
+				<h2>Poblaci&oacute;n Actual</h2>
+				<table id="tabla-generacion-actual">
+					<tr>
+						<th>Cromosoma</th>
+						<th>Objetivo</th>
+						<th>Fitness</th>
+					</tr>
+				</table>
+			</div>
+	
+		<div class="mapa seccion tercera">
+			<canvas id="canvas" width="1100" height="1550"></canvas>
+		</div>
+	</div>
 </body>
 </html>

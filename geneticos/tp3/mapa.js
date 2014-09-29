@@ -34,20 +34,61 @@ function dibujarMapa() {
 	contexto.drawImage(img,0,0);
 }
 
-function iniciarRecorrido(x,y) {
+function iniciarRecorrido(ciudad) {
 	contexto.beginPath();
 	contexto.lineWidth = "2";
 	contexto.strokeStyle="red";
 	contexto.font="20px Georgia";
-	contexto.moveTo(x,y);
-	contexto.strokeText("0",x,y);
+	contexto.moveTo(mapa[ciudad][0], mapa[ciudad][1]);
+	contexto.strokeText("Inicio", mapa[ciudad][0], mapa[ciudad][1]);
 }
 
-function addPuntoRecorrido(x,y,i) {
-	contexto.lineTo(x,y);
-	contexto.strokeText(i,x,y);
+function addPuntoRecorrido(ciudad,i) {
+	contexto.lineTo(mapa[ciudad][0], mapa[ciudad][1]);
+	contexto.strokeText(i, mapa[ciudad][0], mapa[ciudad][1]);
 }
 
 function dibujarRecorrido() {
 	contexto.stroke();
+}
+
+function dibujarRecorridoDesdeArreglo(recorrido) {
+	dibujarMapa();
+	
+	iniciarRecorrido(recorrido[0]);
+
+	for(i = 1; i < recorrido.length; i++) {
+		addPuntoRecorrido(recorrido[i], i);
+	}
+
+	dibujarRecorrido();
+}
+
+function dibujarMejorMapa() {
+	iniciarRecorrido(21);
+	addPuntoRecorrido(20, 1);
+	addPuntoRecorrido(19, 2);
+	addPuntoRecorrido(17, 3);
+	addPuntoRecorrido(0 , 4);
+	addPuntoRecorrido(7 , 5);
+	addPuntoRecorrido(10, 6);
+	addPuntoRecorrido(9 , 7);
+	addPuntoRecorrido(8 , 8);
+	addPuntoRecorrido(6 , 9);
+	addPuntoRecorrido(5 , 10);
+	addPuntoRecorrido(1 , 11);
+	addPuntoRecorrido(2 , 12);
+	addPuntoRecorrido(3 , 13);
+	addPuntoRecorrido(4 , 14);
+	addPuntoRecorrido(15, 15);
+	addPuntoRecorrido(12, 16);
+	addPuntoRecorrido(11, 17);
+	addPuntoRecorrido(14, 18);
+	addPuntoRecorrido(13, 19);
+	addPuntoRecorrido(16, 20);
+	addPuntoRecorrido(18, 21);
+	addPuntoRecorrido(22, 22);
+	addPuntoRecorrido(21, 23);
+	dibujarRecorrido();
+
 }

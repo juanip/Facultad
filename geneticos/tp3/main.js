@@ -60,7 +60,7 @@ function listadoCiudadesHeuristica(ciudadInicioIndex, ciudadesARecorrer, dibujar
 	//mapa
 	if(dibujar) {
 		dibujarMapa();
-		iniciarRecorrido(mapa[indexCiudad][0], mapa[indexCiudad][1]);
+		iniciarRecorrido(indexCiudad);
 	}
 
 	for(cont in ciudadesARecorrer) {
@@ -86,7 +86,7 @@ function listadoCiudadesHeuristica(ciudadInicioIndex, ciudadesARecorrer, dibujar
 		
 		//mapa
 		if(dibujar) {
-			addPuntoRecorrido(mapa[ciudadMasCercana][0], mapa[ciudadMasCercana][1], parseInt(cont)+1);
+			addPuntoRecorrido(ciudadMasCercana, parseInt(cont)+1);
 		}
 	}
 
@@ -138,5 +138,3 @@ function mejorCiudadInicio(ciudadesARecorrer) {
 
 	return mejorx;
 }
-		
-
